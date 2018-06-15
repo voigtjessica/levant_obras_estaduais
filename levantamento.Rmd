@@ -1,0 +1,45 @@
+---
+title: "Levantamento Obras Estaduais"
+author: "Jessica Voigt"
+date: "15 de junho de 2018"
+output: html_document
+---
+
+###Introdução
+
+Esse é um documento para dar início a campanha do projeto TDP para fiscalização de obras estaduais de obras e creches em todo o Brasil.
+
+
+1. Quantidade de obras estaduais atrasadas e paralisadas 
+
+```{r, echo=F, eval=FALSE, warning=FALSE, message=FALSE}
+# dados simec 15/06/2018
+
+library(dplyr)
+library(janitor)
+library(knitr)
+library(kableExtra)
+# tutorial de kableExtra https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html
+
+# obras <- read.csv(url("http://simec.mec.gov.br/painelObras/download.php"), sep=";")
+# save(obras, file="obras.15062018.Rdata")
+
+load("obras.15062018.Rdata")
+obras[obras == ""] <- NA
+obras1 <- obras %>%
+  clean_names() %>%
+  filter(rede_de_ensino_publico == "Estadual") %>%
+  group_by(situacao) %>%
+  summarise(obras = n())
+
+```
+
+```{r, echo=F, eval=TRUE, warning=FALSE, message=FALSE}
+
+obras1 %>%
+kable() %>%
+kable_styling(bootstrap_options = c("striped", "hover", full_width = F))
+
+```
+
+
