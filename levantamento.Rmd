@@ -3,7 +3,13 @@ title: "Levantamento Obras Estaduais"
 author: "Jessica Voigt"
 date: "15 de junho de 2018"
 output: html_document
+
 ---
+
+```{r, echo = FALSE}
+options(knitr.table.format = 'markdown')
+```
+
 
 Esse é um documento para dar início a campanha do projeto TDP para fiscalização de obras estaduais de escolas e creches financiadas pelo FNDE em todo o Brasil.    
 
