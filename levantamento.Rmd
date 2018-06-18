@@ -53,7 +53,8 @@ obras1 %>%
   arrange(desc(obras)) %>%
   mutate(perc = paste0((round(obras/sum(obras), 4) * 100), "%")) %>%
   adorn_totals("row") %>% 
-  kable(col.names=c("Situação","Qtde Obras", "Percentual"), align="cr") %>%
+  kable(col.names=c("Situação","Qtde Obras", "Percentual"), align="cr", 
+        format = "markdown") %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 
 ```
